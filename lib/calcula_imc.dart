@@ -1,10 +1,17 @@
-class IMC {
-  double weight;
-  double height;
+import 'package:hive/hive.dart';
 
-  IMC({required this.weight, required this.height});
+part 'imc.g.dart';
 
-  double calculate() {
-    return weight / (height * height);
-  }
+@HiveType(typeId: 0)
+class IMC extends HiveObject {
+  @HiveField(0)
+  final double weight;
+
+  @HiveField(1)
+  final double height;
+
+  @HiveField(2)
+  final double bmi;
+
+  IMC({required this.weight, required this.height}) : bmi = weight / (height * height);
 }

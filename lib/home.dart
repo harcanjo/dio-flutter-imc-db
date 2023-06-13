@@ -25,7 +25,11 @@ class _MyHomePageState extends State<MyHomePage> {
         history.removeLast();
       }
     });
-  }
+    // Save to Hive
+    final bmiBox = Hive.box<BMI>('bmiBox');
+    final bmiEntry = BMI(weight: weight, height: height, bmi: bmi);
+    bmiBox.add(bmiEntry);
+}
 
   @override
   Widget build(BuildContext context) {

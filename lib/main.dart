@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 
-void main() {
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(BMIAdapter());
+  await Hive.openBox<BMI>('bmiBox');
   runApp(const MyApp());
 }
 
